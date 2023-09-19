@@ -1,0 +1,29 @@
+#!/bin/bash
+
+#################################################
+#only needed for qsub'd runs
+#set time 
+#!/bin/bash
+
+#SBATCH --account=sscm013982
+#SBATCH --job-name=auxsim_MARout_MNARv2aux
+#SBATCH --partition=compute
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=1
+#SBATCH --cpus-per-task=1
+#SBATCH --time=4-00:00:00
+#SBATCH --mem=0
+
+#################################################
+
+#Define working directory 
+export WORKDIR=/user/home/pm0233/Simulations/Auxiliary_missing/MAR_outcome/4_MNARv2_auxiliary
+#Change into working directory 
+cd $WORKDIR
+
+#store the date
+now=$(date +"%Y%m%d")
+
+module load apps/stata/17
+
+	

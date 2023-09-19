@@ -1,0 +1,20 @@
+Paul Madley-Dowd - University of Bristol - 12 May 2022
+
+The simulations were run on BluePebble (https://www.bristol.ac.uk/acrc/high-performance-computing/) as separate scripts for each design factor. 
+Scripts to do this are found in the folder "Submission to HPC - BluePebble". 
+
+Alternatively the masterfile - MASTER.do - can be used to run all design factors using a single script. Note that this will take a long time and any sensible individual will not do this. The Master file is provided to give an idea of how you could run the simulation study bit by bit.  
+
+Some definitions that differ from the manuscript: 
+- MAR_outcome - corresponds to missing outcome mechanism 1 
+- Proxy_outcome - corresponds to missing outcome mechanism 2
+- Efficiency_imputation - - corresponds to missing outcome mechanism 3
+
+- 1_MCAR_auxiliary - corresponds to missing auxiliary mechanism 1
+- 2_MAR_auxiliary - corresponds to missing auxiliary mechanism 2
+- 3_MNAR_auxiliary - corresponds to missing auxiliary mechanism 3
+- 4_MNARv2_auxiliary - corresponds to the sensitivity analysis of missing auxiliary mechanism 2 with W excluded from the imputation model
+
+- auxid takes values 1-4 which are transformed to the correlation values 0.1, 0.3, 0.5 and 0.7 between Z and Y. 
+
+ There are an excessive number of folders in this simulation study. Find a better way to organise dofiles and datafiles. 

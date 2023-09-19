@@ -5,7 +5,5 @@
 #		This will prevent data and log files from being stored online 
 #########################################################################
 
-*.dta
 *.log
-*.txt
 *.csv

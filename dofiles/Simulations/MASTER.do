@@ -17,7 +17,7 @@
 ********************************************************************************
 * 1 - Set up environment
 ********************************************************************************
-do "YOUR_PATH_NAME\dofiles\global_sim_MCAR_aux.do" // set all directories 
+do "YOUR_PATH_NAME\dofiles\global.do" // set all directories 
 do "$Dodir\library.do" // loads all neccesary packages for the programs to work 
 
 ********************************************************************************

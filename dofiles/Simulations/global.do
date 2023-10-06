@@ -1,7 +1,7 @@
 ********************************************************************************
 * Author: 		Paul Madley-Dowd
 * Date: 		19 May 2022
-* Description:	Create the environemnt for simulation of missing auxiliary data 
+* Description:	Create the environment for simulation of missing auxiliary data 
 ********************************************************************************
 clear 
 

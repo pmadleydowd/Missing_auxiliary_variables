@@ -8,7 +8,7 @@ Alternatively the masterfile - MASTER.do - can be used to run all design factors
 Some definitions that differ from the manuscript: 
 - MAR_outcome - corresponds to missing outcome mechanism 1 
 - Proxy_outcome - corresponds to missing outcome mechanism 2
-- Efficiency_imputation - - corresponds to missing outcome mechanism 3
+- Efficiency_imputation - corresponds to missing outcome mechanism 3
 
 - 1_MCAR_auxiliary - corresponds to missing auxiliary mechanism 1
 - 2_MAR_auxiliary - corresponds to missing auxiliary mechanism 2

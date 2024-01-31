@@ -5,6 +5,8 @@ Scripts to do this are found in the folder "Submission to HPC - BluePebble".
 
 Alternatively the masterfile - MASTER.do - can be used to run all design factors using a single script. Note that this will take a long time and any sensible individual will not do this. The Master file is provided to give an idea of how you could run the simulation study bit by bit.  
 
+In each folder is a .do file titled "sim_aux_call.do". These are different within each folder and were titled the same name in order to be run as part of a loop where the folder names were changed but the script name was not. I would not advise doing this in any future projects and apologise for any confusion it causes. 
+
 Some definitions that differ from the manuscript: 
 - MAR_outcome - corresponds to missing outcome mechanism 1 
 - Proxy_outcome - corresponds to missing outcome mechanism 2

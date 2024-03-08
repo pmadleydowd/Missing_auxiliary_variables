@@ -8,8 +8,9 @@ capture log using "$Logdir\3_descriptive_statistics.txt", text replace
 ********************************************************************************
 * 1 - Load data and create environment 
 * 2 - Table S1 Descriptive statistics of cohort characteristics
-* 3 - Table S2 Descriptive statistics of missing data according to missing confounder status 
-* 4 - Table S5 ORs for missing data in the outcome and auxiliary variables
+* 3 - Table S3 ORs for missing data in the outcome and auxiliary variables
+* 4 - Table S4 Descriptive statistics of missing data according to missing confounder status 
+* 5 - Table S5 missing data patterns 
 
 ********************************************************************************
 * 1 - Load data and create environment 
@@ -36,31 +37,24 @@ table1_mc, 	by(mat_smok_bin18wk) ///
 restore
 
 ********************************************************************************
-* 3 - Table S2 Descriptive statistics of missing data according to missing confounder status 
+* 3 - Table S3 missing data patterns 
 ********************************************************************************
 preserve
-keep if in_core  == 1 & kz011b   == 1 
+keep if inclusion == 1
 
-table1_mc, 	by(mis_confany) ///
-			vars(mis_out 	cat 	%5.1f \ ///
-				 mis_auxIQ  cat 	%5.1f \ ///
-				 mis_auxKS4	cat 	%5.1f \ ///
-				 mis_exp  	cat 	%5.1f \ ///
- 				 mis_matage cat 	%5.1f \ ///
-				 mis_parity cat 	%5.1f \ ///
-				 mis_mated 	cat 	%5.1f \ ///
-				 ) ///
-		    nospace onecol missing total(before) ///
-			saving("$Datadir\TableS2_missing_confounder.xlsx", replace)
-restore	
+misstable summarize IQ_age15 IQ_age8 KS4 mat_smok_bin18wk parity_cat matEdDrv matage_cntr
+misstable patterns IQ_age15 IQ_age8 KS4 mat_smok_bin18wk parity_cat matEdDrv matage_cntr
 
+restore 
 
 ********************************************************************************
-* 4 - Table S5 ORs for missing data in the outcome and auxiliary variables
+* 4 - Table S4 ORs for missing data in the outcome and auxiliary variables
 ********************************************************************************
+preserve
+
 capture postutil close 
 tempname memhold 
-postfile `memhold' str10 misvar str10 var lev str20 OR95CI using "$Datadir\TableS5_missingORs.dta", replace
+postfile `memhold' str10 misvar str10 var lev str20 OR95CI using "$Datadir\TableS4_missingORs.dta", replace
 
 foreach misind in mis_out mis_auxIQ mis_auxKS4 {
 	foreach var in IQ_age15 IQ_age8 KS4 mat_smok_bin18wk matage parity_cat matEdDrv sex { 
@@ -102,6 +96,28 @@ rename OR95CI1 OR95CI_IQage15
 rename OR95CI2 OR95CI_IQage8
 rename OR95CI3 OR95CI_KS4
 
-export excel using "$Datadir\TableS5_missingORs.xlsx", replace firstrow(var)
+export excel using "$Datadir\TableS4_missingORs.xlsx", replace firstrow(var)
+
+restore
+********************************************************************************
+* 5 - Table S5 Descriptive statistics of missing data according to missing confounder status 
+********************************************************************************
+preserve
+keep if in_core  == 1 & kz011b   == 1 
+
+table1_mc, 	by(mis_confany) ///
+			vars(mis_out 	cat 	%5.1f \ ///
+				 mis_auxIQ  cat 	%5.1f \ ///
+				 mis_auxKS4	cat 	%5.1f \ ///
+				 mis_exp  	cat 	%5.1f \ ///
+ 				 mis_matage cat 	%5.1f \ ///
+				 mis_parity cat 	%5.1f \ ///
+				 mis_mated 	cat 	%5.1f \ ///
+				 ) ///
+		    nospace onecol missing total(before) ///
+			saving("$Datadir\TableS5_missing_confounder.xlsx", replace)
+restore	
+
+
 ********************************************************************************
 capture log close

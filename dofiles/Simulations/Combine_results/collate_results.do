@@ -133,6 +133,7 @@ foreach outmis in MAR_outcome Proxy_outcome Efficiency_imputation {
 			
 			sort auxid misaux varname
 			gen cca_bias = bias[11]
+			gen cca_se   = modelse[11]
 
 			save "$Datadir/`outmis'/`auxmis'/Prepared_data\simsum_out_`auxid'.dta", replace
 		}

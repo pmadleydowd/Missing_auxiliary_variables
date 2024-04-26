@@ -99,16 +99,16 @@ foreach sens in More_missing_outcome Stronger_ZY_than_XY {
 	if "`sens'" == "More_missing_outcome" {
 		local gtext = "C - Missing outcome data = 75%"
 		local gtext2 = "   Outcome Mechanism 3"
-		local ytextpos1 = .091
-		local ytextpos2 = .0835
 		
 	}
 	if "`sens'" == "Stronger_ZY_than_XY" {
 		local gtext = "F - Correlation between X and Y = 0.2"
 		local gtext2 = "   Outcome Mechanism 3"	
-		local ytextpos1 = .0575
-		local ytextpos2 = .0525
 	}
+
+	local ytextpos1 = 120*140
+	local ytextpos2 = 110*140
+
 	
 	disp "`dir'"
 	disp "`gtext'"
@@ -123,34 +123,30 @@ foreach sens in More_missing_outcome Stronger_ZY_than_XY {
 	gen abs_bias = abs(bias)
 	gen lci_bias = abs_bias - invnormal(0.975)*bias_mcse
 	gen uci_bias = abs_bias + invnormal(0.975)*bias_mcse
+	
+	gen relbias 	= 100*abs_bias/abs(cca_bias)
+	gen relbias_lci = 100*lci_bias/abs(cca_bias)
+	gen relbias_uci = 100*uci_bias/abs(cca_bias)
 
 	sort auxid misaux varname	
-	
-	local cca1 = abs_bias[11]
-	local cca2 = abs_bias[23]
-	local cca3 = abs_bias[35]
-	local cca4 = abs_bias[47]
-			
-	local ccaline = "yline(`cca1', lp(dash) lc(red))"
-	local ccaline = "`ccaline' " + "yline(`cca2', lp(dash) lc(blue))" 
-	local ccaline = "`ccaline' " + "yline(`cca3', lp(dash) lc(green))" 
-	local ccaline = "`ccaline' " + "yline(`cca4', lp(dash) lc(orange))" 
+	local ccaline = "yline(100, lp(dash) lc(black))"
 	
 
 	disp "test1"
 
-	twoway 	(line abs_bias misaux    				if imp == 1 & auxid == 1, col(red))   ///
-			(rcap lci_bias uci_bias misaux 	if imp == 1 & auxid == 1, col(red))   ///
-			(line abs_bias misaux    				if imp == 1 & auxid == 2, col(blue))  ///
-			(rcap lci_bias uci_bias misaux	if imp == 1 & auxid == 2, col(blue))  ///
-			(line abs_bias misaux    				if imp == 1 & auxid == 3, col(green)) ///
-			(rcap lci_bias uci_bias misaux	if imp == 1 & auxid == 3, col(green)) ///
-			(line abs_bias misaux    				if imp == 1 & auxid == 4, col(orange)) ///
-			(rcap lci_bias uci_bias misaux	if imp == 1 & auxid == 4, col(orange)) ///		
+	twoway 	(line relbias misaux    				if imp == 1 & auxid == 1, col(red))   ///
+			(rcap relbias_lci relbias_uci misaux 	if imp == 1 & auxid == 1, col(red))   ///
+			(line relbias misaux    				if imp == 1 & auxid == 2, col(blue))  ///
+			(rcap relbias_lci relbias_uci misaux	if imp == 1 & auxid == 2, col(blue))  ///
+			(line relbias misaux    				if imp == 1 & auxid == 3, col(green)) ///
+			(rcap relbias_lci relbias_uci misaux	if imp == 1 & auxid == 3, col(green)) ///
+			(line relbias misaux    				if imp == 1 & auxid == 4, col(orange)) ///
+			(rcap relbias_lci relbias_uci misaux	if imp == 1 & auxid == 4, col(orange)) ///		
 			, ///
 			`ccaline' ///
-			ytitle("Absolute bias (Monte Carlo 95% CI)", size(small)) ///
-			ylab(,labsize(small)) ///
+			ytitle("% Relative bias (Monte Carlo 95% CI)", size(small)) ///
+			ylab(0(2000)14000,labsize(small)) ///
+			yscale(range(-700 14700)) ///		
 			xtitle("Proportion of missing data in auxiliary variable, Z", size(small)) ///
 			xlab(,labsize(small)) ///
 			legend(order(1  "Correlation of Z and Y = 0.1" ///

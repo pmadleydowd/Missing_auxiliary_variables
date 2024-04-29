@@ -205,9 +205,9 @@ grc1leg bias1_MAR  bias2_MAR  bias3_MAR  ///
 		bias1_prox bias2_prox bias3_prox ///
 		bias1_eff  bias2_eff  bias3_eff ///
 		, rows(3) graphregion(color(white)) name("bias_plot", replace) ///
-		note("Auxiliary missingness mechanism 1: probability of missing Z not dependent on any other variables" ///
-			 "Auxiliary missingness mechanism 2: probability of missing Z dependent on Y given incomplete Z  " ///
-			 "Auxiliary missingness mechanism 3: probability of missing Z independent of Y  given complete W" , size(vsmall))
+		note("Auxiliary missingness mechanism 1: probability of missing Z not caused by any other variables" ///
+			 "Auxiliary missingness mechanism 2: probability of missing Z caused by Z" ///
+			 "Auxiliary missingness mechanism 3: probability of missing Z caused by W" , size(vsmall))
 graph export "$Graphdir\bias_plot.png", name(bias_plot) replace width(2400) height(1600)
 	
 
@@ -215,25 +215,25 @@ graph export "$Graphdir\bias_plot.png", name(bias_plot) replace width(2400) heig
 	* outcome mechanism 1
 grc1leg bias1_MAR  bias2_MAR  bias3_MAR  ///
 		, cols(3) graphregion(color(white) margin(0 0 0 20)) name("bias_plot1", replace) ///
-		note("Auxiliary missingness mechanism 1: probability of missing Z not dependent on any other variables" ///
-			 "Auxiliary missingness mechanism 2: probability of missing Z dependent on Y given incomplete Z  " ///
-			 "Auxiliary missingness mechanism 3: probability of missing Z independent of Y  given complete W" , size(vsmall))
+		note("Auxiliary missingness mechanism 1: probability of missing Z not caused by any other variables" ///
+			 "Auxiliary missingness mechanism 2: probability of missing Z caused by Z" ///
+			 "Auxiliary missingness mechanism 3: probability of missing Z caused by W" , size(vsmall))
 graph export "$Graphdir\bias_plot_om1.png", name(bias_plot1) replace width(2400) height(1600)	
 
 	* outcome mechanism 2
 grc1leg bias1_prox bias2_prox bias3_prox ///
 		, cols(3) graphregion(color(white) margin(0 0 0 20)) name("bias_plot2", replace) ///
-		note("Auxiliary missingness mechanism 1: probability of missing Z not dependent on any other variables" ///
-			 "Auxiliary missingness mechanism 2: probability of missing Z dependent on Y given incomplete Z  " ///
-			 "Auxiliary missingness mechanism 3: probability of missing Z independent of Y  given complete W" , size(vsmall))
+		note("Auxiliary missingness mechanism 1: probability of missing Z not caused by any other variables" ///
+			 "Auxiliary missingness mechanism 2: probability of missing Z caused by Z" ///
+			 "Auxiliary missingness mechanism 3: probability of missing Z caused by W" , size(vsmall))
 graph export "$Graphdir\bias_plot_om2.png", name(bias_plot2) replace width(2400) height(1600)	
 
 	* outcome mechanism 3
 grc1leg bias1_eff  bias2_eff  bias3_eff ///
 		, cols(3) graphregion(color(white) margin(0 0 0 20)) name("bias_plot3", replace) ///
-		note("Auxiliary missingness mechanism 1: probability of missing Z not dependent on any other variables" ///
-			 "Auxiliary missingness mechanism 2: probability of missing Z dependent on Y given incomplete Z  " ///
-			 "Auxiliary missingness mechanism 3: probability of missing Z independent of Y  given complete W" , size(vsmall))
+		note("Auxiliary missingness mechanism 1: probability of missing Z not caused by any other variables" ///
+			 "Auxiliary missingness mechanism 2: probability of missing Z caused by Z" ///
+			 "Auxiliary missingness mechanism 3: probability of missing Z caused by W" , size(vsmall))
 graph export "$Graphdir\bias_plot_om3.png", name(bias_plot3) replace width(2400) height(1600)		
 	
 ********************************************************************************
@@ -368,36 +368,36 @@ grc1leg FMI_mean1 FMI_mean2 FMI_mean3 ///
 		FMI_mean4 FMI_mean5 FMI_mean6 ///
 		FMI_mean7 FMI_mean8 FMI_mean9 ///
 		, ycommon graphregion(color(white)) name("FMI_plot", replace) ///
-		note("Auxiliary missingness mechanism 1: probability of missing Z not dependent on any other variables" ///
-			 "Auxiliary missingness mechanism 2: probability of missing Z dependent on Y given incomplete Z  " ///
-			 "Auxiliary missingness mechanism 3: probability of missing Z independent of Y  given complete W" , size(vsmall))
+		note("Auxiliary missingness mechanism 1: probability of missing Z not caused by any other variables" ///
+			 "Auxiliary missingness mechanism 2: probability of missing Z caused by Z" ///
+			 "Auxiliary missingness mechanism 3: probability of missing Z caused by W" , size(vsmall))
 graph export "$Graphdir\FMI_plot.png", name(FMI_plot) replace width(2400) height(1600)
 
 * individual plots
 	* outcome mechanism 1
 grc1leg FMI_mean1 FMI_mean2 FMI_mean3 /// 
 		, cols(3) ycommon graphregion(color(white) margin(0 0 0 35)) name("FMI_plot1", replace) ///
-		note("Auxiliary missingness mechanism 1: probability of missing Z not dependent on any other variables" ///
-			 "Auxiliary missingness mechanism 2: probability of missing Z dependent on Y given incomplete Z  " ///
-			 "Auxiliary missingness mechanism 3: probability of missing Z independent of Y  given complete W" , size(vsmall))
+		note("Auxiliary missingness mechanism 1: probability of missing Z not caused by any other variables" ///
+			 "Auxiliary missingness mechanism 2: probability of missing Z caused by Z" ///
+			 "Auxiliary missingness mechanism 3: probability of missing Z caused by W" , size(vsmall))
 graph export "$Graphdir\FMI_plot_om1.png", name(FMI_plot1) replace width(2400) height(1600)
 
 
 	* outcome mechanism 2
 grc1leg FMI_mean4 FMI_mean5 FMI_mean6 ///
 		, cols(3) ycommon graphregion(color(white) margin(0 0 0 35)) name("FMI_plot2", replace) ///
-		note("Auxiliary missingness mechanism 1: probability of missing Z not dependent on any other variables" ///
-			 "Auxiliary missingness mechanism 2: probability of missing Z dependent on Y given incomplete Z  " ///
-			 "Auxiliary missingness mechanism 3: probability of missing Z independent of Y  given complete W" , size(vsmall))
+		note("Auxiliary missingness mechanism 1: probability of missing Z not caused by any other variables" ///
+			 "Auxiliary missingness mechanism 2: probability of missing Z caused by Z" ///
+			 "Auxiliary missingness mechanism 3: probability of missing Z caused by W" , size(vsmall))
 graph export "$Graphdir\FMI_plot_om2.png", name(FMI_plot2) replace width(2400) height(1600)
 
 
 	* outcome mechanism 3
 grc1leg FMI_mean7 FMI_mean8 FMI_mean9 ///
 		, cols(3) ycommon graphregion(color(white) margin(0 0 0 35)) name("FMI_plot3", replace) ///
-		note("Auxiliary missingness mechanism 1: probability of missing Z not dependent on any other variables" ///
-			 "Auxiliary missingness mechanism 2: probability of missing Z dependent on Y given incomplete Z  " ///
-			 "Auxiliary missingness mechanism 3: probability of missing Z independent of Y  given complete W" , size(vsmall))
+		note("Auxiliary missingness mechanism 1: probability of missing Z not caused by any other variables" ///
+			 "Auxiliary missingness mechanism 2: probability of missing Z caused by Z" ///
+			 "Auxiliary missingness mechanism 3: probability of missing Z caused by W" , size(vsmall))
 graph export "$Graphdir\FMI_plot_om3.png", name(FMI_plot3) replace width(2400) height(1600)
 
 
@@ -537,36 +537,36 @@ grc1leg SE7 SE8 SE9, cols(3) ycommon graphregion(color(white)) name("SE_plot3", 
 
 grc1leg	SE_plot1 SE_plot2 SE_plot3, ///
 	rows(3) graphregion(color(white)) name("SE_plot", replace) ///
-	note("Auxiliary missingness mechanism 1: probability of missing Z not dependent on any other variables" ///
-		 "Auxiliary missingness mechanism 2: probability of missing Z dependent on Y given incomplete Z  " ///
-		 "Auxiliary missingness mechanism 3: probability of missing Z independent of Y  given complete W" , size(vsmall))
+		note("Auxiliary missingness mechanism 1: probability of missing Z not caused by any other variables" ///
+			 "Auxiliary missingness mechanism 2: probability of missing Z caused by Z" ///
+			 "Auxiliary missingness mechanism 3: probability of missing Z caused by W" , size(vsmall))
 graph export "$Graphdir\SE_plot.png", name(SE_plot) replace width(2400) height(1600)
 
 * individual plots
 	* outcome mechanism 1
 grc1leg	SE_plot1, ///
 	graphregion(color(white) margin(0 0 0 20)) name("SE_plotom1", replace) ///
-	note("Auxiliary missingness mechanism 1: probability of missing Z not dependent on any other variables" ///
-		 "Auxiliary missingness mechanism 2: probability of missing Z dependent on Y given incomplete Z  " ///
-		 "Auxiliary missingness mechanism 3: probability of missing Z independent of Y  given complete W" , size(vsmall))
+		note("Auxiliary missingness mechanism 1: probability of missing Z not caused by any other variables" ///
+			 "Auxiliary missingness mechanism 2: probability of missing Z caused by Z" ///
+			 "Auxiliary missingness mechanism 3: probability of missing Z caused by W" , size(vsmall))
 graph export "$Graphdir\SE_plot_om1.png", name(SE_plotom1) replace width(2400) height(1600)
 
 
 	* outcome mechanism 2
 grc1leg	SE_plot2, ///
 	graphregion(color(white) margin(0 0 0 20)) name("SE_plotom2", replace) ///
-	note("Auxiliary missingness mechanism 1: probability of missing Z not dependent on any other variables" ///
-		 "Auxiliary missingness mechanism 2: probability of missing Z dependent on Y given incomplete Z  " ///
-		 "Auxiliary missingness mechanism 3: probability of missing Z independent of Y  given complete W" , size(vsmall))
+		note("Auxiliary missingness mechanism 1: probability of missing Z not caused by any other variables" ///
+			 "Auxiliary missingness mechanism 2: probability of missing Z caused by Z" ///
+			 "Auxiliary missingness mechanism 3: probability of missing Z caused by W" , size(vsmall))
 graph export "$Graphdir\SE_plot_om2.png", name(SE_plotom2) replace width(2400) height(1600)
 
 
 	* outcome mechanism 3
 grc1leg	SE_plot3, ///
 	graphregion(color(white) margin(0 0 0 20)) name("SE_plotom3", replace) ///
-	note("Auxiliary missingness mechanism 1: probability of missing Z not dependent on any other variables" ///
-		 "Auxiliary missingness mechanism 2: probability of missing Z dependent on Y given incomplete Z  " ///
-		 "Auxiliary missingness mechanism 3: probability of missing Z independent of Y  given complete W" , size(vsmall))
+		note("Auxiliary missingness mechanism 1: probability of missing Z not caused by any other variables" ///
+			 "Auxiliary missingness mechanism 2: probability of missing Z caused by Z" ///
+			 "Auxiliary missingness mechanism 3: probability of missing Z caused by W" , size(vsmall))
 graph export "$Graphdir\SE_plot_om3.png", name(SE_plotom3) replace width(2400) height(1600)
 
 
@@ -721,9 +721,9 @@ grc1leg	pattern1 pattern2 pattern3 ///
 	pattern7 pattern8 pattern9 ///
 	, ///
 	rows(3) graphregion(color(white)) name("pattern_plot", replace) ///
-	note("Auxiliary missingness mechanism 1: probability of missing Z not dependent on any other variables" ///
-		 "Auxiliary missingness mechanism 2: probability of missing Z dependent on Y given incomplete Z  " ///
-		 "Auxiliary missingness mechanism 3: probability of missing Z independent of Y  given complete W" , size(vsmall))
+		note("Auxiliary missingness mechanism 1: probability of missing Z not caused by any other variables" ///
+			 "Auxiliary missingness mechanism 2: probability of missing Z caused by Z" ///
+			 "Auxiliary missingness mechanism 3: probability of missing Z caused by W" , size(vsmall))
 graph export "$Graphdir\pattern_plot.png", name(pattern_plot) replace width(2400) height(1600)
 
 
